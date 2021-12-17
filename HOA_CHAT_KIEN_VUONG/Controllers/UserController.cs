@@ -19,9 +19,14 @@ namespace HOA_CHAT_KIEN_VUONG.Controllers
         }
 
         [HttpPut("register")]
-        public bool Register([FromForm, FromBody] string MATK, [FromForm, FromBody] string MATKHAU, [FromForm, FromBody] string MAQUYEN, [FromForm, FromBody] string HINHANH, [FromForm, FromBody] string HOTEN, [FromForm, FromBody] string SODIENTHOAI)
+        public bool Register([FromForm, FromBody] string MATK,
+            [FromForm, FromBody] string MATKHAU,
+            [FromForm, FromBody] string HOTEN,
+            [FromForm, FromBody] string GIOITINH,
+            [FromForm, FromBody] string DIACHI,
+            [FromForm, FromBody] string EMAIL)
         {
-            return 1 == TaiKhoan.DangKy(MATK, MATKHAU, MAQUYEN, HINHANH, HOTEN, SODIENTHOAI);
+            return -1 != TaiKhoan.DangKy(MATK, MATKHAU, "KH", HOTEN, GIOITINH, DIACHI, EMAIL);
         }
 
         [HttpGet("get/{MATK}")]

@@ -154,5 +154,14 @@ namespace HOA_CHAT_KIEN_VUONG
             cmd.Parameters.AddWithValue("@MALOAI", MALOAI);
             return SQL_Database.GetData(cmd);
         }
+
+        public static DataTable SANPHAM_SEARCH(string SEARCH)
+        {
+            Console.WriteLine(SEARCH);
+            OleDbCommand cmd = new OleDbCommand("SANPHAM_SEARCH");
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@SEARCH", $"%{SEARCH}%");
+            return SQL_Database.GetData(cmd);
+        }
     }
 }

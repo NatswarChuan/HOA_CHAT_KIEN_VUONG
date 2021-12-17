@@ -24,16 +24,23 @@ namespace HOA_CHAT_KIEN_VUONG
             return SQL_Database.GetData(cmd);
         }
 
-        public static int DangKy(string matk, string mk, string quyen, string anh,string hoten, string sdt)
+        public static int DangKy(string MATK,
+            string MATKHAU,
+            string MAQUYEN,
+            string HOTEN,
+            string GIOITINH,
+            string DIACHI,
+            string EMAIL)
         {
             OleDbCommand cmd = new OleDbCommand("[TaiKhoan_Register]");
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MATK", matk);
-            cmd.Parameters.AddWithValue("@MATKHAU", mk);
-            cmd.Parameters.AddWithValue("@MAQUYEN", quyen);
-            cmd.Parameters.AddWithValue("@HINHANH", anh);
-            cmd.Parameters.AddWithValue("@HOTEN", hoten);
-            cmd.Parameters.AddWithValue("@SODIENTHOAI", sdt);
+            cmd.Parameters.AddWithValue("@MATK", MATK);
+            cmd.Parameters.AddWithValue("@MATKHAU", MATKHAU);
+            cmd.Parameters.AddWithValue("@MAQUYEN", MAQUYEN);
+            cmd.Parameters.AddWithValue("@GIOITINH", GIOITINH);
+            cmd.Parameters.AddWithValue("@HOTEN", HOTEN);
+            cmd.Parameters.AddWithValue("@DIACHI", DIACHI);
+            cmd.Parameters.AddWithValue("@EMAIL", EMAIL);
             int result = SQL_Database.ExecuteNoneQuery(cmd);
             return result;
         }

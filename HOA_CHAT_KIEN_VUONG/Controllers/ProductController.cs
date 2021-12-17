@@ -16,7 +16,7 @@ namespace HOA_CHAT_KIEN_VUONG.Controllers
         [HttpGet("get/{id}")]
         public string Get(string id)
         {
-            var query = HoaChat.SanPham_KTra(id).Select($"MATAIKHOAN = '{id}'");
+            var query = HoaChat.SanPham_KTra(id).Select($"MAHANGHOA = '{id}'");
             int count = query.Length;
             return count == 0 ? "[]" : JsonConvert.SerializeObject(query[0].Table, Formatting.Indented);
         }
@@ -33,6 +33,14 @@ namespace HOA_CHAT_KIEN_VUONG.Controllers
         public string Category(string MALOAI)
         {
             var query = HoaChat.SANPHAM_SELECT_LOAI(MALOAI).Select();
+            int count = query.Length;
+            return count == 0 ? "[]" : JsonConvert.SerializeObject(query[0].Table, Formatting.Indented);
+        }
+
+        [HttpGet("search/{SEARCH}")]
+        public string Search(string SEARCH)
+        {
+            var query = HoaChat.SANPHAM_SEARCH(SEARCH).Select();
             int count = query.Length;
             return count == 0 ? "[]" : JsonConvert.SerializeObject(query[0].Table, Formatting.Indented);
         }
